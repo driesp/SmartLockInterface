@@ -16,6 +16,7 @@ class CreateLocksTable extends Migration
       Schema::create('locks', function (Blueprint $table) {
           $table->increments('id');
           $table->string('room')->unique();
+          $table->string('address')->unique();
           $table->string('password');
           $table->timestamps();
       });

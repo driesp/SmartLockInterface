@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
-    <title>{{ config('app.name', 'Smart Lock') }}</title>
+    <title><?php echo e(config('app.name', 'Smart Lock')); ?></title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
@@ -16,9 +16,9 @@
 
     <!-- Scripts -->
     <script>
-        window.Laravel = {!! json_encode([
+        window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
-        ]) !!};
+        ]); ?>;
     </script>
 </head>
 <body>
@@ -36,8 +36,9 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'SmartLock') }}
+                    <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
+                        <?php echo e(config('app.name', 'SmartLock')); ?>
+
                     </a>
                 </div>
 
@@ -50,36 +51,37 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
+                        <?php if(Auth::guest()): ?>
+                            <li><a href="<?php echo e(route('login')); ?>">Login</a></li>
+                            <li><a href="<?php echo e(route('register')); ?>">Register</a></li>
+                        <?php else: ?>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    <?php echo e(Auth::user()->name); ?> <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ route('logout') }}"
+                                        <a href="<?php echo e(route('logout')); ?>"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
+                                        <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+                                            <?php echo e(csrf_field()); ?>
+
                                         </form>
                                     </li>
                                 </ul>
                             </li>
-                        @endif
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
         </nav>
 
-        @yield('content')
+        <?php echo $__env->yieldContent('content'); ?>
     </div>
 
     <!-- Scripts -->

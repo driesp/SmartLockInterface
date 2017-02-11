@@ -1,17 +1,11 @@
-@extends('layouts.app')
+@extends('home.home')
+@section('data')
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">My Locks</div>
+<div class="panel panel-default">
+    <div class="panel-heading">My locks</div>
 
-                <div class="panel-body">
-                    You are logged in!
-                </div>
-            </div>
-        </div>
+    <div class="panel-body">
+        Here will all your locks be displayed
     </div>
 </div>
 @endsection

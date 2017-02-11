@@ -18,3 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@dashboard');
+Route::get('/home/dashboard', 'HomeController@dashboard');
+Route::get('/home/controlpanel', 'HomeController@controlpanel');
+Route::get('/home/locks', 'LocksController@show');
+Route::get('home/locks/{Lock}/edit', 'LocksController@edit');
+Route::get('/home/users', 'HomeController@users');
