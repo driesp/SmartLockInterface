@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'function', 'department', 
+        'name', 'email', 'password', 'function', 'department',
     ];
 
     /**
@@ -26,4 +26,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function locks()
+    {
+      return $this->belongsToMany('App\Lock')->withTimeStamps();
+    }
 }

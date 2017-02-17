@@ -16,16 +16,16 @@
           </thead>
           <tbody>
             <tr>
-              <a type="button" href="/home/locks/add" class="pull-right btn btn-primary btn-primary"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Lock</a>
+              <a type="button" href="/home/lock/create" class="pull-right btn btn-primary btn-primary"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Lock</a>
             </tr>
             <?php $__currentLoopData = $locks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lock): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
               <tr>
                 <th scope="row"><?php echo e($lock->id); ?></th>
                 <td><?php echo e($lock->room); ?></td>
-                <td><?php echo e($lock->password); ?></td>
+                <td type='password'><?php echo e($lock->password); ?></td>
                 <td><?php echo e($lock->address); ?></td>
-                <td><a type="button" href="/home/locks/<?php echo e($lock->id); ?>/edit" class="btn btn-primary btn-success"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
-                <td><a type="button" href="/home/locks/<?php echo e($lock->id); ?>/delete" class="btn btn-primary btn-danger"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+                <td><a type="button" href="/home/lock/<?php echo e($lock->id); ?>/edit" class="btn btn-primary btn-success"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
+                <td><a type="button" href="/home/lock/<?php echo e($lock->id); ?>/delete" class="btn btn-primary btn-danger"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
               </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           </tbody>
