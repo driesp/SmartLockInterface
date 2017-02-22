@@ -52,6 +52,8 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'function' => 'required|max:255',
             'department' => 'required|max:255',
+            'telephone' => 'required|max:255',
+            'address' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
@@ -71,6 +73,8 @@ class RegisterController extends Controller
             'function' => $data['function'],
             'department' => $data['department'],
             'password' => bcrypt($data['password']),
+            'telephone' => $data['telephone'],
+            'address' => $data['address'],
         ]);
     }
 

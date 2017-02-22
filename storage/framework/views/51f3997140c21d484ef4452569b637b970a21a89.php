@@ -59,6 +59,32 @@
                     <?php endif; ?>
                 </div>
             </div>
+            <div class="form-group<?php echo e($errors->has('telephone') ? ' has-error' : ''); ?>">
+                <label for="telephone" class="col-md-4 control-label">Telephone</label>
+
+                <div class="col-md-6">
+                    <input id="telephone" type="telephone" class="form-control" name="telephone" value="<?php echo e(old('telephone')); ?>" required>
+
+                    <?php if($errors->has('telephone')): ?>
+                        <span class="help-block">
+                            <strong><?php echo e($errors->first('telephone')); ?></strong>
+                        </span>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <div class="form-group<?php echo e($errors->has('address') ? ' has-error' : ''); ?>">
+                <label for="address" class="col-md-4 control-label">Address</label>
+
+                <div class="col-md-6">
+                    <input id="address" type="address" class="form-control" name="address" value="<?php echo e(old('address')); ?>" required>
+
+                    <?php if($errors->has('address')): ?>
+                        <span class="help-block">
+                            <strong><?php echo e($errors->first('address')); ?></strong>
+                        </span>
+                    <?php endif; ?>
+                </div>
+            </div>
 
             <div class="form-group<?php echo e($errors->has('password') ? ' has-error' : ''); ?>">
                 <label for="password" class="col-md-4 control-label">Password</label>
