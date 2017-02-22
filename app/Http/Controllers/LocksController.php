@@ -71,7 +71,7 @@ class LocksController extends Controller
         'address' => 'required|unique:locks,address',
         'password' => 'required|min:6'
       ]);
-
+      
       $Lock = new Lock($request->all());
       $Lock->save();
 
