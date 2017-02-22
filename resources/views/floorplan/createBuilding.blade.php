@@ -1,5 +1,11 @@
 @extends('home.home')
 @section('data')
+  <style>
+  img
+  {
+      width: 690px;
+  }
+  </style>
 <div class="panel panel-default">
     <div class="panel-heading text-center">Create Lock</div>
     <div class="panel-body">

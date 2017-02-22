@@ -1,6 +1,10 @@
 <?php $__env->startSection('data'); ?>
 
 <style>
+img
+{
+    width: 690px;
+}
 div.hoverCard
 {
   display: none;

@@ -2,6 +2,10 @@
 @section('data')
 
 <style>
+img
+{
+    width: 690px;
+}
 div.hoverCard
 {
   display: none;
