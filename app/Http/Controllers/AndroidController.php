@@ -28,12 +28,12 @@ class AndroidController extends Controller
     }
     public function data(Request $request)
     {
-      if($request->id != NULL)
+      if($request['id'] != NULL)
       {
-        $user = User::find($request->id)->get();
+        $user = User::find($request['id']);
         if( $user != NULL)
         {
-          $Locks = $user[0]->Locks;
+          $Locks = $user->Locks;
           $data = "";
           foreach ($Locks as $lock) {
             $intervalData = "[".$lock->room.";".$lock->password.";".$lock->address."]";
@@ -42,6 +42,9 @@ class AndroidController extends Controller
 
           }
           return $data;
+        }
+        else {
+          return 'error';
         }
 
       }
