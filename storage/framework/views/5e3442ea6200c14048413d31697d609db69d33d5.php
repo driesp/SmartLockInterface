@@ -21,11 +21,20 @@
     </div>
   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 <div class="pull-right">
-  <?php if(auth::user()->function == 'Admin'): ?>
-    <div class="btn-group" role="group" aria-label="...">
-      <a type="button" href='/home/floorplan/<?php echo e($Ground->id); ?>/building' class="btn btn-default btn-lg">Add Building</a>
+
+    <div class="btn-group-justified paddingBottom" role="group" aria-label="...">
+      <a type="button" href="/home/floorplan" class="btn btnBorder btn-primary" ><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Return</a>
+      <?php if(auth::user()->function == 'Admin'): ?>
+        <a type="button" href='/home/floorplan/<?php echo e($Ground->id); ?>/building' class="btn btnBorder btn-primary">Add Building</a>
+      <?php else: ?>
+        <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+      <?php endif; ?>
+      <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+      <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+      <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+      <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
     </div>
-  <?php endif; ?>
+
 </div>
 <div class="col-md-12">
   <img id="groundImg" class=" map col-md-12" src="../../uploads/<?php echo e($Ground->filename); ?>" usemap="groundmap"><canvas id="clickCanvas"></canvas></img>

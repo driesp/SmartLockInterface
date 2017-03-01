@@ -1,4 +1,18 @@
 <?php $__env->startSection('data'); ?>
+  <style>
+  img
+  {
+      width: 690px;
+  }
+  </style>
+  <div class="btn-group-justified paddingBottom" role="group" aria-label="...">
+    <a type="button" href="/home/floorplan/<?php echo e($Ground->id); ?>" class="btn btnBorder btn-primary" ><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Return</a>
+    <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+    <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+    <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+    <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+    <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+  </div>
 <div class="panel panel-default">
     <div class="panel-heading text-center">Create Lock</div>
     <div class="panel-body">

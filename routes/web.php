@@ -59,10 +59,10 @@ Route::get('home/user/{User}/delete', 'UserController@delete');
  * Routes for floorplan
  */
 
-Route::get('home/floorplan', 'FloorplanController@floorplan');
-Route::get('home/floorplan/create', 'FloorplanController@create');
-Route::get('home/floorplan/{Ground}', 'FloorplanController@view');
-Route::post('home/floorplan/insert', 'FloorplanController@insert');
+Route::get('home/floorplan', 'FloorplanController@fcGroundsShow');
+Route::get('home/floorplan/create', 'FloorplanController@fcGroundCreateView');
+Route::get('home/floorplan/{Ground}', 'FloorplanController@fcGroundView');
+Route::post('home/floorplan/insert', 'FloorplanController@fcGroundDatabaseInsert');
 Route::get('home/floorplan/{Ground}/building', 'FloorplanController@createBuilding');
 Route::post('home/floorplan/{Ground}/insert', 'FloorplanController@insertBuilding');
 Route::get('home/floorplan/{Ground}/{Building}', 'FloorplanController@viewBuilding');

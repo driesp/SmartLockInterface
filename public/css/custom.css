@@ -1,0 +1,87 @@
+html, body {
+    background-color: #fff;
+    color: #636b6f;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+    height: 100vh;
+    margin: 0;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.content {
+    text-align: center;
+}
+
+.logoLarge {
+    width: 950px;
+    height: auto;
+}
+.logoSmall {
+    width: 200px;
+    height: auto;
+}
+.navbar-brand
+{
+  padding:0 0 0 0;
+  margin:auto;
+}
+.navbarStyle
+{
+  background-color: white;
+  border-bottom: solid 2px #44BBF8;
+}
+
+.btn-group-vertical>.btn:first-child:not(:last-child)
+{
+  border-radius: 0 0 0 0 ;
+}
+
+.btn-group-vertical>.btn:last-child:not(:first-child)
+{
+  border-radius: 0 0 0 0 ;
+}
+
+.btnBorder
+{
+  border-radius: 0 0 0 0 ;
+}
+.paddingBottom
+{
+  padding-bottom: 25px;
+}
+.panel-primary
+{
+  border-radius: 0 0 0 0 ;
+}
+.panel-heading
+{
+  border-radius: 0 0 0 0 ;
+}
+.links > a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}

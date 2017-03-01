@@ -2,8 +2,17 @@
 @section('data')
 <div class="pull-right">
   @if (auth::user()->function == 'Admin')
-    <div class="btn-group" role="group" aria-label="...">
-      <a type="button" href='/home/floorplan/{{$Ground->id}}/{{$Building->id}}/createfloor' class="btn btn-default btn-lg">Create Floor</a>
+    <div class="btn-group-justified paddingBottom" role="group" aria-label="...">
+      <a type="button" href="/home/floorplan/{{$Ground->id}}" class="btn btnBorder btn-primary" ><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Return</a>
+      @if (auth::user()->function == 'Admin')
+        <a type="button" href='/home/floorplan/{{$Ground->id}}/{{$Building->id}}/createfloor' class="btn btn-primary btnBorder">Create Floor</a>
+      @else
+        <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+      @endif
+      <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+      <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+      <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+      <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
     </div>
   @endif
 </div>

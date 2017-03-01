@@ -22,11 +22,20 @@
     </div>
   @endforeach
 <div class="pull-right">
-  @if (auth::user()->function == 'Admin')
-    <div class="btn-group" role="group" aria-label="...">
-      <a type="button" href='/home/floorplan/{{$Ground->id}}/building' class="btn btn-default btn-lg">Add Building</a>
+
+    <div class="btn-group-justified paddingBottom" role="group" aria-label="...">
+      <a type="button" href="/home/floorplan" class="btn btnBorder btn-primary" ><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Return</a>
+      @if (auth::user()->function == 'Admin')
+        <a type="button" href='/home/floorplan/{{$Ground->id}}/building' class="btn btnBorder btn-primary">Add Building</a>
+      @else
+        <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+      @endif
+      <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+      <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+      <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+      <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
     </div>
-  @endif
+
 </div>
 <div class="col-md-12">
   <img id="groundImg" class=" map col-md-12" src="../../uploads/{{$Ground->filename}}" usemap="groundmap"><canvas id="clickCanvas"></canvas></img>

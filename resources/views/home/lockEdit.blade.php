@@ -1,6 +1,13 @@
 @extends('home.home')
 @section('data')
-
+<div class="btn-group-justified paddingBottom" role="group" aria-label="...">
+    <a type="button" href="/home/locks" class="btn btnBorder btn-primary" ><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Return</a>
+    <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+    <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+    <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+    <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+    <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+</div>
 <div class="panel panel-default">
     <div class="panel-heading text-center">Edit Lock</div>
     <div class="panel-body">

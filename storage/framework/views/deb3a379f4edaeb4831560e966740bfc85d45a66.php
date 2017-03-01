@@ -1,8 +1,17 @@
 <?php $__env->startSection('data'); ?>
 <div class="pull-right">
   <?php if(auth::user()->function == 'Admin'): ?>
-    <div class="btn-group" role="group" aria-label="...">
-      <a type="button" href='/home/floorplan/<?php echo e($Ground->id); ?>/<?php echo e($Building->id); ?>/createfloor' class="btn btn-default btn-lg">Create Floor</a>
+    <div class="btn-group-justified paddingBottom" role="group" aria-label="...">
+      <a type="button" href="/home/floorplan/<?php echo e($Ground->id); ?>" class="btn btnBorder btn-primary" ><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Return</a>
+      <?php if(auth::user()->function == 'Admin'): ?>
+        <a type="button" href='/home/floorplan/<?php echo e($Ground->id); ?>/<?php echo e($Building->id); ?>/createfloor' class="btn btn-primary btnBorder">Create Floor</a>
+      <?php else: ?>
+        <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+      <?php endif; ?>
+      <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+      <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+      <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+      <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
     </div>
   <?php endif; ?>
 </div>

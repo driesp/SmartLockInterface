@@ -6,8 +6,8 @@
       @include('home.sidemenu')
         <div class="col-md-8">
           @yield('data')
-
         </div>
+      @include('home.statistics')
     </div>
 </div>
 @endsection

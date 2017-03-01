@@ -21,14 +21,20 @@ div.hoverCard
     </div>
   </div>
 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-<div class="pull-right">
+<div class="btn-group-justified paddingBottom" role="group" aria-label="...">
+  <a type="button" href="/home/floorplan/<?php echo e($Ground->id); ?>/<?php echo e($Building->id); ?>" class="btn btnBorder btn-primary" ><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Return</a>
   <?php if(auth::user()->function == 'Admin'): ?>
-    <div class="btn-group" role="group" aria-label="...">
-      <a type="button" href='/home/floorplan/<?php echo e($Ground->id); ?>/<?php echo e($Building->id); ?>/<?php echo e($Floor->id); ?>/edit' class="btn btn-default btn-lg">Edit</a>
-      <a type="button" href='/home/floorplan/<?php echo e($Ground->id); ?>/<?php echo e($Building->id); ?>/<?php echo e($Floor->id); ?>/addlock' class="btn btn-default btn-lg">Add Lock</a>
-    </div>
+    <a type="button" href='/home/floorplan/<?php echo e($Ground->id); ?>/<?php echo e($Building->id); ?>/<?php echo e($Floor->id); ?>/edit' class="btn btn-primary btnBorder">Edit</a>
+    <a type="button" href='/home/floorplan/<?php echo e($Ground->id); ?>/<?php echo e($Building->id); ?>/<?php echo e($Floor->id); ?>/addlock' class="btn btn-primary btnBorder">Add Lock</a>
+  <?php else: ?>
+    <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+    <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
   <?php endif; ?>
+  <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+  <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+  <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
 </div>
+
 <div class="col-md-12">
 
   <img class="col-md-12" src="../../../../uploads/floors/<?php echo e($Floor->filename); ?>" usemap="floormap"><canvas id="clickCanvas"></canvas></img>

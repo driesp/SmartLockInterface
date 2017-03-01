@@ -22,14 +22,20 @@ div.hoverCard
     </div>
   </div>
 @endforeach
-<div class="pull-right">
+<div class="btn-group-justified paddingBottom" role="group" aria-label="...">
+  <a type="button" href="/home/floorplan/{{$Ground->id}}/{{$Building->id}}" class="btn btnBorder btn-primary" ><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Return</a>
   @if (auth::user()->function == 'Admin')
-    <div class="btn-group" role="group" aria-label="...">
-      <a type="button" href='/home/floorplan/{{$Ground->id}}/{{$Building->id}}/{{$Floor->id}}/edit' class="btn btn-default btn-lg">Edit</a>
-      <a type="button" href='/home/floorplan/{{$Ground->id}}/{{$Building->id}}/{{$Floor->id}}/addlock' class="btn btn-default btn-lg">Add Lock</a>
-    </div>
+    <a type="button" href='/home/floorplan/{{$Ground->id}}/{{$Building->id}}/{{$Floor->id}}/edit' class="btn btn-primary btnBorder">Edit</a>
+    <a type="button" href='/home/floorplan/{{$Ground->id}}/{{$Building->id}}/{{$Floor->id}}/addlock' class="btn btn-primary btnBorder">Add Lock</a>
+  @else
+    <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+    <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
   @endif
+  <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+  <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+  <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
 </div>
+
 <div class="col-md-12">
 
   <img class="col-md-12" src="../../../../uploads/floors/{{$Floor->filename}}" usemap="floormap"><canvas id="clickCanvas"></canvas></img>

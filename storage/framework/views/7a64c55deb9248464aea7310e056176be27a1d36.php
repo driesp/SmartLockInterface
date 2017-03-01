@@ -1,31 +1,29 @@
 <?php $__env->startSection('data'); ?>
 
-<div class="panel panel-default">
-    <div class="panel-heading">My locks</div>
 
-    <div class="panel-body">
-      <table class="table">
-        <thead class="thead-inverse">
-          <tr>
-            <th></th>
-            <th>#</th>
-            <th>Room</th>
-            <th>Address</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php $__currentLoopData = Auth::user()->locks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lock): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <tr>
-              <td><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></td>
-              <th scope="row"><?php echo e($lock->id); ?></th>
-              <td><?php echo e($lock->room); ?></td>
-              <td><?php echo e($lock->address); ?></td>
-            </tr>
-          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-        </tbody>
-      </table>
-    </div>
+<div class="">
+  <table class="table">
+    <thead class="thead-inverse">
+      <tr>
+        <th></th>
+        <th>#</th>
+        <th>Room</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php $__currentLoopData = Auth::user()->locks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lock): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <tr>
+          <td><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></td>
+          <th scope="row"><?php echo e($lock->id); ?></th>
+          <td><?php echo e($lock->room); ?></td>
+          <td><?php echo e($lock->address); ?></td>
+        </tr>
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+    </tbody>
+  </table>
 </div>
 <?php $__env->stopSection(); ?>
 
