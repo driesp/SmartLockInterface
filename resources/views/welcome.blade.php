@@ -27,7 +27,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    <img class="logoLarge" src="images/SmartLockLogo.svg" />
+                    <img class="logoLarge" src="/images/SmartLockLogo.svg" />
                 </div>
             </div>
         </div>

@@ -54,20 +54,20 @@ Route::get('home/user/{User}/edit', 'UserController@edit');
 Route::get('home/user/create', 'UserController@create');
 Route::patch('home/user/{User}', 'UserController@update');
 Route::get('home/user/{User}/delete', 'UserController@delete');
-
+Route::get('home/profile', 'UserController@profile');
 /**
  * Routes for floorplan
  */
 
 Route::get('home/floorplan', 'FloorplanController@fcGroundsShow');
-Route::get('home/floorplan/create', 'FloorplanController@fcGroundCreateView');
+Route::get('home/floorplan/create', 'FloorplanController@fcGroundCreate');
 Route::get('home/floorplan/{Ground}', 'FloorplanController@fcGroundView');
 Route::post('home/floorplan/insert', 'FloorplanController@fcGroundDatabaseInsert');
-Route::get('home/floorplan/{Ground}/building', 'FloorplanController@createBuilding');
-Route::post('home/floorplan/{Ground}/insert', 'FloorplanController@insertBuilding');
-Route::get('home/floorplan/{Ground}/{Building}', 'FloorplanController@viewBuilding');
-Route::get('home/floorplan/{Ground}/{Building}/createfloor', 'FloorplanController@createFloor');
-Route::post('home/floorplan/{Ground}/{Building}/insertfloor', 'FloorplanController@insertFloor');
-Route::get('home/floorplan/{Ground}/{Building}/{Floor}', 'FloorplanController@showFloor');
-Route::get('home/floorplan/{Ground}/{Building}/{Floor}/addlock', 'FloorplanController@addlock');
-Route::post('home/floorplan/{Ground}/{Building}/{Floor}/insertlock', 'FloorplanController@insertlock');
+Route::get('home/floorplan/{Ground}/building', 'FloorplanController@fcBuildingCreate');
+Route::post('home/floorplan/{Ground}/insert', 'FloorplanController@fcBuildingInsert');
+Route::get('home/floorplan/{Ground}/{Building}', 'FloorplanController@fcBuildingView');
+Route::get('home/floorplan/{Ground}/{Building}/createfloor', 'FloorplanController@fcFloorCreate');
+Route::post('home/floorplan/{Ground}/{Building}/insertfloor', 'FloorplanController@fcFloorInsert');
+Route::get('home/floorplan/{Ground}/{Building}/{Floor}', 'FloorplanController@fcFloorView');
+Route::get('home/floorplan/{Ground}/{Building}/{Floor}/addlock', 'FloorplanController@fcFloorLockAdd');
+Route::post('home/floorplan/{Ground}/{Building}/{Floor}/insertlock', 'FloorplanController@fcFloorLockInsert');

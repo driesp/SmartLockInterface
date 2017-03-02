@@ -1,4 +1,5 @@
-<?php $__env->startSection('data'); ?>
+@extends('home.home')
+@section('data')
   <style>
   img
   {
@@ -6,7 +7,7 @@
   }
   </style>
   <div class="btn-group-justified paddingBottom" role="group" aria-label="...">
-    <a type="button" href="/home/floorplan/<?php echo e($Ground->id); ?>" class="btn btnBorder btn-primary" ><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Return</a>
+    <a type="button" href="/home/floorplan/{{$Ground->id}}" class="btn btnBorder btn-primary" ><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Return</a>
     <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
     <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
     <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
@@ -16,9 +17,8 @@
 <div class="panel panel-primary">
     <div class="panel-heading text-center">Create Lock</div>
     <div class="panel-body">
-      <form class="form-horizontal" method="POST" action="/home/floorplan/<?php echo e($Ground->id); ?>/insert" enctype="multipart/form-data">
-        <?php echo e(csrf_field()); ?>
-
+      <form class="form-horizontal" method="POST" action="/home/floorplan/{{$Ground->id}}/insert" enctype="multipart/form-data">
+        {{ csrf_field() }}
 
         <fieldset>
 
@@ -26,7 +26,7 @@
           <div class="form-group">
             <label class="col-md-4 control-label" for="name">Name</label>
             <div class="col-md-4">
-            <input id="name" name="name" value='<?php echo e(old('name')); ?>' type="text" placeholder="name" class="form-control input-md" >
+            <input id="name" name="name" value='{{old('name')}}' type="text" placeholder="name" class="form-control input-md" >
 
             </div>
           </div>
@@ -76,20 +76,20 @@
 
         </fieldset>
       </form>
-      <?php if(count($errors)): ?>
+      @if (count($errors))
         <div class="alert alert-danger" role="alert">
           <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
           <ul>
-            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-              <li><?php echo e($error); ?></li>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            @foreach($errors->all() as $error)
+              <li>{{$error}}</li>
+            @endforeach
           </ul>
         </div>
-      <?php endif; ?>
+      @endif
     </div>
 </div>
 <div class="col-md-12">
-  <img class="col-md-12" src="../../../uploads/<?php echo e($Ground->filename); ?>"/>
+  <img class="col-md-12" src="../../../uploads/{{$Ground->filename}}"/>
 </div>
 
 
@@ -111,6 +111,4 @@ $(document).ready(function() {
   });
 });
 </script>
-<?php $__env->stopSection(); ?>
-
-<?php echo $__env->make('home.home', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+@endsection

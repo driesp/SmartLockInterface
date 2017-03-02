@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use App\Mail\Welcome;
+use Mail;
 
 class RegisterController extends Controller
 {
@@ -88,7 +90,9 @@ class RegisterController extends Controller
           );
       }
 
-      $this->create($request->all());
+      $User = $this->create($request->all());
+
+      Mail::to(User::find(1))->send(new Welcome($User,$request['password']));
 
       return back();
   }

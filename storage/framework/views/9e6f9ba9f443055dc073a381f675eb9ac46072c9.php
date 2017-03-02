@@ -1,5 +1,4 @@
-@extends('home.home')
-@section('data')
+<?php $__env->startSection('data'); ?>
   <style>
   img
   {
@@ -7,18 +6,19 @@
   }
   </style>
 <div class="btn-group-justified paddingBottom" role="group" aria-label="...">
-  <a type="button" href="/home/floorplan/{{$Ground->id}}/{{$Building->id}}/{{$Floor->id}}" class="btn btnBorder btn-primary" ><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Return</a>
+  <a type="button" href="/home/floorplan/<?php echo e($Ground->id); ?>/<?php echo e($Building->id); ?>/<?php echo e($Floor->id); ?>" class="btn btnBorder btn-primary" ><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Return</a>
   <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
   <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
   <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
   <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
   <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
 </div>
-<div class="panel panel-default">
+<div class="panel panel-primary">
     <div class="panel-heading text-center">Create Lock</div>
     <div class="panel-body">
-      <form class="form-horizontal" method="POST" action="/home/floorplan/{{$Ground->id}}/{{$Building->id}}/{{$Floor->id}}/insertlock" enctype="multipart/form-data">
-        {{ csrf_field() }}
+      <form class="form-horizontal" method="POST" action="/home/floorplan/<?php echo e($Ground->id); ?>/<?php echo e($Building->id); ?>/<?php echo e($Floor->id); ?>/insertlock" enctype="multipart/form-data">
+        <?php echo e(csrf_field()); ?>
+
 
         <fieldset>
 
@@ -27,9 +27,9 @@
             <label class="col-md-4 control-label" for="name">Name</label>
             <div class="col-md-4">
               <select id="selectbasic" name="id" class="form-control">
-                @foreach($Locks as $lock)
-                  <option value="{{$lock->id}}">{{$lock->room}} ({{$lock->address}})</option>
-                @endforeach
+                <?php $__currentLoopData = $Locks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lock): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <option value="<?php echo e($lock->id); ?>"><?php echo e($lock->room); ?> (<?php echo e($lock->address); ?>)</option>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
               </select>
 
             </div>
@@ -80,20 +80,20 @@
 
         </fieldset>
       </form>
-      @if (count($errors))
+      <?php if(count($errors)): ?>
         <div class="alert alert-danger" role="alert">
           <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
           <ul>
-            @foreach($errors->all() as $error)
-              <li>{{$error}}</li>
-            @endforeach
+            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+              <li><?php echo e($error); ?></li>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           </ul>
         </div>
-      @endif
+      <?php endif; ?>
     </div>
 </div>
 <div class="col-md-12">
-  <img class="col-md-12" src="/uploads/floors/{{$Floor->filename}}"/>
+  <img class="col-md-12" src="/uploads/floors/<?php echo e($Floor->filename); ?>"/>
 </div>
 
 
@@ -115,4 +115,6 @@ $(document).ready(function() {
   });
 });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('home.home', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

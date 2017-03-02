@@ -6,18 +6,18 @@
       width: 690px;
   }
   </style>
-  <div class="btn-group-justified paddingBottom" role="group" aria-label="...">
-    <a type="button" href="/home/floorplan/{{$Ground->id}}" class="btn btnBorder btn-primary" ><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Return</a>
-    <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
-    <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
-    <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
-    <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
-    <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
-  </div>
-<div class="panel panel-default">
+<div class="btn-group-justified paddingBottom" role="group" aria-label="...">
+  <a type="button" href="/home/floorplan/{{$Ground->id}}/{{$Building->id}}/{{$Floor->id}}" class="btn btnBorder btn-primary" ><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Return</a>
+  <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+  <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+  <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+  <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+  <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+</div>
+<div class="panel panel-primary">
     <div class="panel-heading text-center">Create Lock</div>
     <div class="panel-body">
-      <form class="form-horizontal" method="POST" action="/home/floorplan/{{$Ground->id}}/insert" enctype="multipart/form-data">
+      <form class="form-horizontal" method="POST" action="/home/floorplan/{{$Ground->id}}/{{$Building->id}}/{{$Floor->id}}/insertlock" enctype="multipart/form-data">
         {{ csrf_field() }}
 
         <fieldset>
@@ -26,7 +26,11 @@
           <div class="form-group">
             <label class="col-md-4 control-label" for="name">Name</label>
             <div class="col-md-4">
-            <input id="name" name="name" value='{{old('name')}}' type="text" placeholder="name" class="form-control input-md" >
+              <select id="selectbasic" name="id" class="form-control">
+                @foreach($Locks as $lock)
+                  <option value="{{$lock->id}}">{{$lock->room}} ({{$lock->address}})</option>
+                @endforeach
+              </select>
 
             </div>
           </div>
@@ -89,7 +93,7 @@
     </div>
 </div>
 <div class="col-md-12">
-  <img class="col-md-12" src="../../../uploads/{{$Ground->filename}}"/>
+  <img class="col-md-12" src="/uploads/floors/{{$Floor->filename}}"/>
 </div>
 
 

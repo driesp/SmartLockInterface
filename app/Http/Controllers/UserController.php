@@ -41,6 +41,10 @@ class UserController extends Controller
     $User->update($request->all());
     return back();
   }
+  public function profile()
+  {
+    return view('user.profile');
+  }
 
   public function delete(User $User)
   {

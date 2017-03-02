@@ -9,7 +9,7 @@
 </div>
 
 
-<div class="panel panel-default">
+<div class="panel panel-primary">
     <div class="panel-heading text-center">Edit User</div>
     <div class="panel-body">
       <form class="form-horizontal" method="POST" action="/home/user/<?php echo e($User->id); ?>")>

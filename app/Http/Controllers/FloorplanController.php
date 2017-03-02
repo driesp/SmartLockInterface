@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+
+use Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Ground;
 use App\Building;
 use App\Floor;
 use App\Lock;
+use App\User;
 
 class FloorplanController extends Controller
 {
@@ -57,19 +60,24 @@ class FloorplanController extends Controller
   public function fcGroundsShow()
   {
     $grounds = Ground::All();
-    return view('floorplan.floorplan', compact('grounds'));
+    return view('floorplan.fcGroundsShow', compact('grounds'));
 
   }
 
+  /**
+   * return the view where all the buildings can be
+   * seen -> Buildings can be selected
+   * @param  Ground $Ground Ground
+   * @return view
+   */
   public function fcGroundView(Ground $Ground)
   {
-    return view('floorplan.view', compact('Ground'));
-
+    return view('floorplan.fcGroundView', compact('Ground'));
   }
 
-  public function fcGroundCreateView()
+  public function fcGroundCreate()
   {
-    return view('floorplan.createGrounds');
+    return view('floorplan.fcGroundCreate');
   }
 
   public function fcGroundDatabaseInsert(Request $request)
@@ -83,12 +91,12 @@ class FloorplanController extends Controller
     return back();
   }
 
-    public function createBuilding(Ground $Ground)
+    public function fcBuildingCreate(Ground $Ground)
     {
-      return view('floorplan.createBuilding', compact('Ground'));
+      return view('floorplan.fcBuildingCreate', compact('Ground'));
     }
 
-    public function insertBuilding(Request $request, Ground $Ground)
+    public function fcBuildingInsert(Request $request, Ground $Ground)
     {
       $this->fcBuildingValidator($request->all());
       $building = new Building($request->all());
@@ -97,17 +105,17 @@ class FloorplanController extends Controller
       return back();
     }
 
-    public function viewBuilding(Ground $Ground, Building $Building)
+    public function fcBuildingView(Ground $Ground, Building $Building)
     {
       $Floors = $Building->Floors;
-      return view('floorplan.viewBuilding', compact('Ground', 'Building', 'Floors'));
+      return view('floorplan.fcBuildingView', compact('Ground', 'Building', 'Floors'));
     }
 
-    public function createFloor(Ground $Ground, Building $Building)
+    public function fcFloorCreate(Ground $Ground, Building $Building)
     {
-      return view('floorplan.createFloor', compact('Ground','Building'));
+      return view('floorplan.fcFloorCreate', compact('Ground','Building'));
     }
-    public function insertFloor(Request $request, Ground $Ground, Building $Building)
+    public function fcFloorInsert(Request $request, Ground $Ground, Building $Building)
     {
       $file = $request->file('file');
       $file->move('uploads/floors', $file->getClientOriginalName());
@@ -122,21 +130,22 @@ class FloorplanController extends Controller
       return back();
     }
 
-    public function showFloor(Ground $Ground, Building $Building, Floor $Floor)
+    public function fcFloorView(Ground $Ground, Building $Building, Floor $Floor)
     {
-      return view('floorplan.floor', compact('Ground','Building','Floor'));
+      return view('floorplan.fcFloorView', compact('Ground','Building','Floor'));
     }
 
-    public function addlock(Ground $Ground, Building $Building, Floor $Floor)
+    public function fcFloorLockAdd(Ground $Ground, Building $Building, Floor $Floor)
     {
       $Locks = Lock::where('floor_id', null)->get();
-      return view('floorplan.addlock', compact('Ground','Building','Floor', 'Locks'));
+      return view('floorplan.fcFloorLockAdd', compact('Ground','Building','Floor', 'Locks'));
     }
-    public function insertlock(Request $request, Ground $Ground, Building $Building, Floor $Floor)
+    public function fcFloorLockInsert(Request $request, Ground $Ground, Building $Building, Floor $Floor)
     {
       $lock = Lock::find($request['id']);
       $lock->update($request->all());
       $Floor->Locks()->save($lock);
       return back();
     }
+
 }

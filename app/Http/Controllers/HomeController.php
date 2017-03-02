@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Lock;
 use App\User;
+use Mail;
+use App\Mail\Welcome;
 
 
 class HomeController extends Controller
@@ -26,7 +29,6 @@ class HomeController extends Controller
      */
     public function dashboard()
     {
-
       return view('home.dashboard');
     }
 

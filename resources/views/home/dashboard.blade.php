@@ -1,7 +1,14 @@
 @extends('home.home')
 @section('data')
 
-
+<div class="btn-group-justified paddingBottom" role="group" aria-label="...">
+    <a type="button" href="/home/profile" class="btn btnBorder btn-primary" >Profile</a>
+    <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+    <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+    <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+    <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+    <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+</div>
 
 <div class="">
   <table class="table">

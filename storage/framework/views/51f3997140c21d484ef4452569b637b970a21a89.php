@@ -7,7 +7,7 @@
   <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
   <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
 </div>
-<div class="panel panel-default">
+<div class="panel panel-primary">
     <div class="panel-heading">Create User</div>
     <div class="panel-body">
         <form class="form-horizontal" role="form" method="POST" action="<?php echo e(route('register')); ?>">

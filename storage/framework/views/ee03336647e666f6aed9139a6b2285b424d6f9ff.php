@@ -7,7 +7,7 @@
     <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
     <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
 </div>
-<div class="panel panel-default">
+<div class="panel panel-primary">
     <div class="panel-heading text-center">Edit Lock</div>
     <div class="panel-body">
       <form class="form-horizontal" method="POST" action="/home/lock/<?php echo e($Lock->id); ?>")>
@@ -56,7 +56,7 @@
       </form>
     </div>
 </div>
-<div class="panel panel-default">
+<div class="panel panel-primary">
   <div class="panel-heading text-center">Add User</div>
   <div class="panel-body">
     <form class="form-horizontal" method="POST" action="/home/lock/<?php echo e($Lock->id); ?>/connect">
@@ -88,7 +88,7 @@
   </div>
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-primary">
   <div class="panel-heading text-center">Users</div>
   <div class="panel-body">
     <table class="table">
