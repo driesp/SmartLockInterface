@@ -2,10 +2,10 @@
 
   Welcome, {{$user->name}}!
 
-  Your password is: {{$password}}
+  Your temporary password is, {{$password}}
 
 @component('mail::button', ['url' => 'https://smartlock.tk/login'])
-To Login
+Log In
 @endcomponent
 
 @component('mail::panel')

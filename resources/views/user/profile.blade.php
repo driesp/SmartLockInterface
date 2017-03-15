@@ -3,7 +3,7 @@
 
 <div class="btn-group-justified paddingBottom" role="group" aria-label="...">
     <a type="button" href="/home/dashboard" class="btn btnBorder btn-primary" ><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Return</a>
-    <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
+    <a type="button" href="/home/profile/password" class="btn btnBorder btn-primary" >Password</a>
     <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
     <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>
     <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>

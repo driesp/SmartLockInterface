@@ -55,6 +55,8 @@ Route::get('home/user/create', 'UserController@create');
 Route::patch('home/user/{User}', 'UserController@update');
 Route::get('home/user/{User}/delete', 'UserController@delete');
 Route::get('home/profile', 'UserController@profile');
+Route::get('home/profile/password', 'UserController@passwordChange');
+Route::post('home/profile/password/update','UserController@passwordUpdate');
 /**
  * Routes for floorplan
  */
