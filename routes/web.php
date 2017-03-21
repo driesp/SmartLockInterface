@@ -41,6 +41,7 @@ Route::get('home/lock/{Lock}/edit', 'LocksController@edit');
 Route::get('home/lock/create', 'LocksController@create');
 Route::patch('home/lock/{Lock}', 'LocksController@update');
 Route::get('home/lock/{Lock}/delete', 'LocksController@delete');
+Route::get('home/lock/{Lock}/build', 'LocksController@build');
 Route::post('home/lock/{Lock}/connect', 'LocksController@connect');
 Route::post('home/lock/store', 'LocksController@store');
 Route::get('home/lock/{Lock}/{User}/delete','LocksController@removeUser');

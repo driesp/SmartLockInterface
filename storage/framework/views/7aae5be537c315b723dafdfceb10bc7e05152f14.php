@@ -15,6 +15,7 @@
         <th>Room</th>
         <th>Password</th>
         <th>Address</th>
+        <th>Build</th>
         <th>Edit</th>
         <th>Delete</th>
       </tr>
@@ -26,6 +27,7 @@
           <td><?php echo e($lock->room); ?></td>
           <td type='password'><?php echo e($lock->password); ?></td>
           <td><?php echo e($lock->address); ?></td>
+          <td><a type="button" href="/home/lock/<?php echo e($lock->id); ?>/build" class="btn btn-primary btn-primary"> <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a></td>
           <td><a type="button" href="/home/lock/<?php echo e($lock->id); ?>/edit" class="btn btn-primary btn-success"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
           <td><a type="button" href="/home/lock/<?php echo e($lock->id); ?>/delete" class="btn btn-primary btn-danger"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
         </tr>

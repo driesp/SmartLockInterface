@@ -16,6 +16,7 @@
         <th>Room</th>
         <th>Password</th>
         <th>Address</th>
+        <th>Build</th>
         <th>Edit</th>
         <th>Delete</th>
       </tr>
@@ -27,6 +28,7 @@
           <td>{{$lock->room}}</td>
           <td type='password'>{{$lock->password}}</td>
           <td>{{$lock->address}}</td>
+          <td><a type="button" href="/home/lock/{{$lock->id}}/build" class="btn btn-primary btn-primary"> <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a></td>
           <td><a type="button" href="/home/lock/{{$lock->id}}/edit" class="btn btn-primary btn-success"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
           <td><a type="button" href="/home/lock/{{$lock->id}}/delete" class="btn btn-primary btn-danger"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
         </tr>

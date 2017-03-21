@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\File;
 use App\Lock;
 use App\User;
 use Auth;
@@ -71,11 +72,32 @@ class LocksController extends Controller
         'address' => 'required|unique:locks,address',
         'password' => 'required|min:6'
       ]);
-      
+
       $Lock = new Lock($request->all());
       $Lock->save();
 
       return back();
+    }
+    public function build(Lock $Lock)
+    {
+      $contents = file_get_contents(public_path() . '/Build/deviceinfo.h');
+
+      $contents = $contents . '/*Device Name*/ ' . PHP_EOL . 'const static char       DEVICE_NAME[]           = "'.$Lock->room.'";'. PHP_EOL;
+      $contents = $contents . '/*Device Password*/ ' . PHP_EOL . 'const char              PASSWORD[]              = "'.$Lock->password.'";'. PHP_EOL;
+      //dd($contents);
+
+      file_put_contents(public_path() . '/Build/SmartLock/deviceinfo.h', $contents);
+      if(file_exists(public_path() . '/Build/SmartLock/Makefile'))
+      {
+        $buildpath = public_path(). '/Build/SmartLock/';
+        $output = exec('make --directory="$buildpath"');
+        echo($output);
+      }
+      else
+      {
+        echo("No Makefile");
+      }
+
     }
 
 }
