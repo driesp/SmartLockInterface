@@ -1,0 +1,1 @@
+C:\OpenOCD\bin\openocd -s C:/OpenOCD/bin/scripts/ -f interface/stlink-v2.cfg -f target/nrf51.cfg

@@ -43,6 +43,7 @@ void writeCharCallback(const GattWriteCallbackParams *params)
     if(params->handle == writeChar.getValueHandle()) {
         char input[15];
         sprintf(input, "%s", params->data);
+		printf("%s\n\r", input);
         if(strcmp(PASSWORD, input) == 0 ) {
             printf("Password Is Correct");
             printf("\n\r");

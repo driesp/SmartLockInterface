@@ -8,6 +8,6 @@ static const uint8_t    write_uuid[]            = {0x71, 0x3D, 0, 3, 0x50, 0x3E,
 static const uint8_t    base_uuid_rev[]         = {0x1E, 0x94, 0x8D, 0xF1, 0x48, 0x31, 0x94, 0xBA, 0x75, 0x4C, 0x3E, 0x50, 0, 0, 0x3D, 0x71};
 
 /*Device Name*/ 
-const static char       DEVICE_NAME[]           = "A00001";
+const static char       DEVICE_NAME[]           = "A00002";
 /*Device Password*/ 
-const char              PASSWORD[]              = "ZegEft4k42RSKNPs";
+const char              PASSWORD[]              = "RFxGnWy3cDZAuTsr";

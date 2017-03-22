@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
 use Illuminate\Http\Request;
 use Illuminate\Http\File;
 use App\Lock;
@@ -87,11 +90,101 @@ class LocksController extends Controller
       //dd($contents);
 
       file_put_contents(public_path() . '/Build/SmartLock/deviceinfo.h', $contents);
+
       if(file_exists(public_path() . '/Build/SmartLock/Makefile'))
       {
-        $buildpath = public_path(). '/Build/SmartLock/';
-        $output = exec('make --directory="$buildpath"');
-        echo($output);
+        $commandMake = 'make --directory="'.public_path(). '/Build/SmartLock/"';
+        $commandMakeClean = 'make clean --directory="'.public_path(). '/Build/SmartLock/"';
+        $process = new Process($commandMakeClean);
+        $process->run();
+        if (!$process->isSuccessful()) {
+          throw new ProcessFailedException($process);
+        }
+        $process = new Process($commandMake);
+        $process->run();
+        if (!$process->isSuccessful()) {
+          throw new ProcessFailedException($process);
+        }
+        $folderPath = public_path(). '/'. $Lock->room .'/';
+        if (!file_exists($folderPath))
+        {
+          mkdir($folderPath, 0777);
+        }
+        if ( ! copy(public_path() .'\Build\SmartLock\BUILD\SmartLock.hex' , $folderPath . 'SmartLock.hex'))
+        {
+            die("Couldn't move file");
+        }
+        if ( ! copy(public_path() .'\Build\SmartLock\Hex\bootloader.hex' , $folderPath . 'bootloader.hex'))
+        {
+            die("Couldn't move file");
+        }
+        if ( ! copy(public_path() .'\Build\SmartLock\Hex\softdevice.hex' , $folderPath . 'softdevice.hex'))
+        {
+            die("Couldn't move file");
+        }
+        if ( ! copy(public_path() .'\Build\SmartLock\Hex\nrf51_stlink.tcl' , $folderPath . 'nrf51_stlink.tcl'))
+        {
+            die("Couldn't move file");
+        }
+        if ( ! copy(public_path() .'\Build\SmartLock\Hex\stlink-v2.cfg' , $folderPath . 'stlink-v2.cfg'))
+        {
+            die("Couldn't move file");
+        }
+        if ( ! copy(public_path() .'\Build\SmartLock\Hex\telnet.vbs' , $folderPath . 'telnet.vbs'))
+        {
+            die("Couldn't move file");
+        }
+        if ( ! copy(public_path() .'\Build\SmartLock\Hex\install.bat' , $folderPath . 'install.bat'))
+        {
+            die("Couldn't move file");
+        }
+        if ( ! copy(public_path() .'\Build\SmartLock\Hex\mergehex.exe' , $folderPath . 'mergehex.exe'))
+        {
+            die("Couldn't move file");
+        }
+         $files = glob(public_path().'/'.$Lock->room.'/*');
+         \Zipper::make(public_path(). "\\" .$Lock->room . '.zip')->add($files)->close();
+
+         sleep(10);
+
+         if ( ! unlink($folderPath . 'SmartLock.hex'))
+         {
+             die("Couldn't delete file");
+         }
+         if ( ! unlink($folderPath . 'bootloader.hex'))
+         {
+             die("Couldn't delete file");
+         }
+         if ( ! unlink($folderPath . 'softdevice.hex'))
+         {
+             die("Couldn't delete file");
+         }
+         if ( ! unlink($folderPath . 'nrf51_stlink.tcl'))
+         {
+             die("Couldn't delete file");
+         }
+         if ( ! unlink($folderPath . 'stlink-v2.cfg'))
+         {
+             die("Couldn't delete file");
+         }
+         if ( ! unlink($folderPath . 'telnet.vbs'))
+         {
+             die("Couldn't delete file");
+         }
+         if ( ! unlink($folderPath . 'install.bat'))
+         {
+             die("Couldn't delete file");
+         }
+         if ( ! unlink($folderPath . 'mergehex.exe'))
+         {
+             die("Couldn't delete file");
+         }
+         if ( ! rmdir($folderPath))
+         {
+             die("Couldn't delete folder");
+         }
+
+         return response()->download(public_path().'/'.$Lock->room . '.zip');
       }
       else
       {
