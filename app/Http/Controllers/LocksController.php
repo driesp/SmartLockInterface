@@ -93,8 +93,8 @@ class LocksController extends Controller
 
       if(file_exists(public_path() . '/Build/SmartLock/Makefile'))
       {
-        $commandMake = 'make --directory="'.public_path(). '/Build/SmartLock/"';
-        $commandMakeClean = 'make clean --directory="'.public_path(). '/Build/SmartLock/"';
+        $commandMake = 'sudo -u root -S make --directory="'.public_path(). '/Build/SmartLock/" 2>&1 < /home/dries/.sudopass/sudopass.secret';
+        $commandMakeClean = 'sudo -u root -S make clean --directory="'.public_path(). '/Build/SmartLock/" 2>&1 < /home/dries/.sudopass/sudopass.secret';
         $process = new Process($commandMakeClean);
         $process->run();
         if (!$process->isSuccessful()) {
@@ -110,40 +110,40 @@ class LocksController extends Controller
         {
           mkdir($folderPath, 0777);
         }
-        if ( ! copy(public_path() .'\Build\SmartLock\BUILD\SmartLock.hex' , $folderPath . 'SmartLock.hex'))
+        if ( ! copy(public_path() .'/Build/SmartLock/BUILD/SmartLock.hex' , $folderPath . 'SmartLock.hex'))
         {
             die("Couldn't move file");
         }
-        if ( ! copy(public_path() .'\Build\SmartLock\Hex\bootloader.hex' , $folderPath . 'bootloader.hex'))
+        if ( ! copy(public_path() .'/Build/SmartLock/Hex/bootloader.hex' , $folderPath . 'bootloader.hex'))
         {
             die("Couldn't move file");
         }
-        if ( ! copy(public_path() .'\Build\SmartLock\Hex\softdevice.hex' , $folderPath . 'softdevice.hex'))
+        if ( ! copy(public_path() .'/Build/SmartLock/Hex/softdevice.hex' , $folderPath . 'softdevice.hex'))
         {
             die("Couldn't move file");
         }
-        if ( ! copy(public_path() .'\Build\SmartLock\Hex\nrf51_stlink.tcl' , $folderPath . 'nrf51_stlink.tcl'))
+        if ( ! copy(public_path() .'/Build/SmartLock/Hex/nrf51_stlink.tcl' , $folderPath . 'nrf51_stlink.tcl'))
         {
             die("Couldn't move file");
         }
-        if ( ! copy(public_path() .'\Build\SmartLock\Hex\stlink-v2.cfg' , $folderPath . 'stlink-v2.cfg'))
+        if ( ! copy(public_path() .'/Build/SmartLock/Hex/stlink-v2.cfg' , $folderPath . 'stlink-v2.cfg'))
         {
             die("Couldn't move file");
         }
-        if ( ! copy(public_path() .'\Build\SmartLock\Hex\telnet.vbs' , $folderPath . 'telnet.vbs'))
+        if ( ! copy(public_path() .'/Build/SmartLock/Hex/telnet.vbs' , $folderPath . 'telnet.vbs'))
         {
             die("Couldn't move file");
         }
-        if ( ! copy(public_path() .'\Build\SmartLock\Hex\install.bat' , $folderPath . 'install.bat'))
+        if ( ! copy(public_path() .'/Build/SmartLock/Hex/install.bat' , $folderPath . 'install.bat'))
         {
             die("Couldn't move file");
         }
-        if ( ! copy(public_path() .'\Build\SmartLock\Hex\mergehex.exe' , $folderPath . 'mergehex.exe'))
+        if ( ! copy(public_path() .'/Build/SmartLock/Hex/mergehex.exe' , $folderPath . 'mergehex.exe'))
         {
             die("Couldn't move file");
         }
          $files = glob(public_path().'/'.$Lock->room.'/*');
-         \Zipper::make(public_path(). "\\" .$Lock->room . '.zip')->add($files)->close();
+         \Zipper::make(public_path(). "/" .$Lock->room . '.zip')->add($files)->close();
 
          sleep(10);
 
