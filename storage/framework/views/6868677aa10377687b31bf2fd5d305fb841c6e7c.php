@@ -23,7 +23,7 @@ div.hoverCard
 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 <div class="btn-group-justified paddingBottom" role="group" aria-label="...">
   <a type="button" href="/home/floorplan/<?php echo e($Ground->id); ?>/<?php echo e($Building->id); ?>" class="btn btnBorder btn-primary" ><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Return</a>
-  <?php if(auth::user()->function == 'Admin'): ?>
+  <?php if(auth::user()->admin == 1): ?>
     <a type="button" href='/home/floorplan/<?php echo e($Ground->id); ?>/<?php echo e($Building->id); ?>/<?php echo e($Floor->id); ?>/edit' class="btn btn-primary btnBorder">Edit</a>
     <a type="button" href='/home/floorplan/<?php echo e($Ground->id); ?>/<?php echo e($Building->id); ?>/<?php echo e($Floor->id); ?>/addlock' class="btn btn-primary btnBorder">Add Lock</a>
   <?php else: ?>

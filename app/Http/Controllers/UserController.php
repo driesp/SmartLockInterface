@@ -12,7 +12,8 @@ use Auth;
 class UserController extends Controller
 {
 
-  protected function passwordValidator(array $data)
+
+  protected function ucPasswordValidator(array $data)
   {
       return Validator::make($data, [
           'password' => 'required|min:6|confirmed',
@@ -22,25 +23,26 @@ class UserController extends Controller
   public function __construct()
   {
       $this->middleware('auth');
+      $this->middleware('admin');
   }
 
-  public function show()
+  public function ucShow()
   {
     $users = User::All();
-    return view('home.users',compact('users'));
+    return view('user.ucList',compact('users'));
   }
 
-  public function edit(User $User)
+  public function ucEdit(User $User)
   {
-    return view('home.userEdit', compact('User'));
+    return view('user.ucEdit', compact('User'));
   }
 
-  public function create()
+  public function ucCreate()
   {
-    return view('home.userCreate');
+    return view('user.ucCreate');
   }
 
-  public function update(Request $request, User $User)
+  public function ucUpdate(Request $request, User $User)
   {
 
     if(!($request['password_old'] == $request['password']))
@@ -53,24 +55,24 @@ class UserController extends Controller
   }
 
 
-  public function delete(User $User)
+  public function ucDelete(User $User)
   {
     $User->delete();
     return back();
   }
 
-  public function profile()
+  public function ucProfile()
   {
-    return view('user.profile');
+    return view('user.ucProfile');
   }
 
-  public function passwordChange()
+  public function ucPasswordChange()
   {
-    return view('user.changePassword');
+    return view('user.ucChangePassword');
   }
-  public function passwordUpdate(Request $request)
+  public function ucPasswordUpdate(Request $request)
   {
-    $this->passwordValidator($request->all());
+    $this->ucPasswordValidator($request->all());
     auth::user()->password = bcrypt($request['password']);
     auth::user()->save();
     return back();

@@ -27,25 +27,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function dashboard()
+    public function hcDashboard()
     {
       return view('home.dashboard');
     }
 
-    public function controlpanel()
+    public function hcControlpanel()
     {
-
       return view('home.controlpanel');
-    }
-
-    public function locks()
-    {
-
-      return view('home.locks');
-    }
-    public function users()
-    {
-
-      return view('home.users');
     }
 }

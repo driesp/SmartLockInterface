@@ -21,9 +21,9 @@ Auth::routes();
  * Basic home routes
  */
 
-Route::get('home', 'HomeController@dashboard');
-Route::get('home/dashboard', 'HomeController@dashboard');
-Route::get('home/controlpanel', 'HomeController@controlpanel');
+Route::get('home', 'HomeController@hcDashboard');
+Route::get('home/dashboard', 'HomeController@hcDashboard');
+Route::get('home/controlpanel', 'HomeController@hcControlpanel');
 
 /**
  * Routes for android data
@@ -36,28 +36,28 @@ Route::post('android/data', 'AndroidController@data');
  * Routes for locks
  */
 
-Route::get('home/locks', 'LocksController@show');
-Route::get('home/lock/{Lock}/edit', 'LocksController@edit');
-Route::get('home/lock/create', 'LocksController@create');
-Route::patch('home/lock/{Lock}', 'LocksController@update');
-Route::get('home/lock/{Lock}/delete', 'LocksController@delete');
-Route::get('home/lock/{Lock}/build', 'LocksController@build');
-Route::post('home/lock/{Lock}/connect', 'LocksController@connect');
-Route::post('home/lock/store', 'LocksController@store');
-Route::get('home/lock/{Lock}/{User}/delete','LocksController@removeUser');
+Route::get('home/locks', 'LocksController@lcShow');
+Route::get('home/lock/{Lock}/edit', 'LocksController@lcEdit');
+Route::get('home/lock/create', 'LocksController@lcCreate');
+Route::patch('home/lock/{Lock}', 'LocksController@lcUpdate');
+Route::get('home/lock/{Lock}/delete', 'LocksController@lcDelete');
+Route::get('home/lock/{Lock}/build', 'LocksController@lcBuild');
+Route::post('home/lock/{Lock}/connect', 'LocksController@lcConnect');
+Route::post('home/lock/store', 'LocksController@lcStore');
+Route::get('home/lock/{Lock}/{User}/delete','LocksController@lcUserRemove');
 
 /**
  * Routes for users
  */
 
-Route::get('home/users', 'UserController@show');
-Route::get('home/user/{User}/edit', 'UserController@edit');
-Route::get('home/user/create', 'UserController@create');
-Route::patch('home/user/{User}', 'UserController@update');
-Route::get('home/user/{User}/delete', 'UserController@delete');
-Route::get('home/profile', 'UserController@profile');
-Route::get('home/profile/password', 'UserController@passwordChange');
-Route::post('home/profile/password/update','UserController@passwordUpdate');
+Route::get('home/users', 'UserController@ucShow');
+Route::get('home/user/{User}/edit', 'UserController@ucEdit');
+Route::get('home/user/create', 'UserController@ucCreate');
+Route::patch('home/user/{User}', 'UserController@ucUpdate');
+Route::get('home/user/{User}/delete', 'UserController@ucDelete');
+Route::get('home/profile', 'UserController@ucProfile');
+Route::get('home/profile/password', 'UserController@ucPasswordChange');
+Route::post('home/profile/password/update','UserController@ucPasswordUpdate');
 /**
  * Routes for floorplan
  */
@@ -74,3 +74,5 @@ Route::post('home/floorplan/{Ground}/{Building}/insertfloor', 'FloorplanControll
 Route::get('home/floorplan/{Ground}/{Building}/{Floor}', 'FloorplanController@fcFloorView');
 Route::get('home/floorplan/{Ground}/{Building}/{Floor}/addlock', 'FloorplanController@fcFloorLockAdd');
 Route::post('home/floorplan/{Ground}/{Building}/{Floor}/insertlock', 'FloorplanController@fcFloorLockInsert');
+Route::get('home/floorplan/{Ground}/{Building}/{Floor}/edit', 'FloorplanController@fcFloorLocks');
+Route::get('home/floorplan/{Ground}/{Building}/{Floor}/{Lock}/delete', 'FloorplanController@fcFloorLockDelete');

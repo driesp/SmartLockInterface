@@ -24,7 +24,7 @@ div.hoverCard
 @endforeach
 <div class="btn-group-justified paddingBottom" role="group" aria-label="...">
   <a type="button" href="/home/floorplan/{{$Ground->id}}/{{$Building->id}}" class="btn btnBorder btn-primary" ><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Return</a>
-  @if (auth::user()->function == 'Admin')
+  @if (auth::user()->admin == 1)
     <a type="button" href='/home/floorplan/{{$Ground->id}}/{{$Building->id}}/{{$Floor->id}}/edit' class="btn btn-primary btnBorder">Edit</a>
     <a type="button" href='/home/floorplan/{{$Ground->id}}/{{$Building->id}}/{{$Floor->id}}/addlock' class="btn btn-primary btnBorder">Add Lock</a>
   @else

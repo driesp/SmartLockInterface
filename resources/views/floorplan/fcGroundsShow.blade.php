@@ -1,7 +1,7 @@
 @extends('home.home')
 @section('data')
 <div class="pull-right">
-  @if (auth::user()->function == 'Admin')
+  @if (auth::user()->admin == 1)
     <div class="btn-group-justified paddingBottom" role="group" aria-label="...">
       <a type="button" href='/home/floorplan/create' class="btn btnBorder btn-primary">Create Ground</a>
       <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>

@@ -24,7 +24,7 @@
 
     <div class="btn-group-justified paddingBottom" role="group" aria-label="...">
       <a type="button" href="/home/floorplan" class="btn btnBorder btn-primary" ><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Return</a>
-      <?php if(auth::user()->function == 'Admin'): ?>
+      <?php if(auth::user()->admin == 1): ?>
         <a type="button" href='/home/floorplan/<?php echo e($Ground->id); ?>/building' class="btn btnBorder btn-primary">Add Building</a>
       <?php else: ?>
         <a type="button" href="" class="btn btnBorder btn-default disabled" ></a>

@@ -17,42 +17,43 @@ class LocksController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('admin');
     }
 
 
-    public function show()
+    public function lcShow()
     {
 
       $locks = Lock::all();
-      return view('home.locks', compact('locks'));
+      return view('lock.lcList', compact('locks'));
 
     }
-    public function edit(Lock $Lock)
+    public function lcEdit(Lock $Lock)
     {
       $users = User::all();
-      return view('home.lockEdit', compact('Lock','users'));
+      return view('lock.lcEdit', compact('Lock','users'));
 
     }
-    public function create()
+    public function lcCreate()
     {
 
-      return view('home.lockCreate');
+      return view('lock.lcCreate');
 
     }
 
-    public function update(Request $request, Lock $Lock)
+    public function lcUpdate(Request $request, Lock $Lock)
     {
       $Lock->update($request->all());
       return back();
     }
 
-    public function delete(Lock $Lock)
+    public function lcDelete(Lock $Lock)
     {
       $Lock->delete();
       return back();
     }
 
-    public function connect(Request $request, Lock $Lock)
+    public function lcConnect(Request $request, Lock $Lock)
     {
       $User = User::find($request['user']);
       if(!($Lock->users->contains($User)))
@@ -62,13 +63,13 @@ class LocksController extends Controller
       return back();
     }
 
-    public function removeUser(Lock $Lock, User $User)
+    public function lcUserRemove(Lock $Lock, User $User)
     {
       $Lock->users()->detach($User);
       return back();
     }
 
-    public function store(Request $request)
+    public function lcStore(Request $request)
     {
       $this->validate($request, [
         'room' => 'required|unique:locks,room',
@@ -81,7 +82,7 @@ class LocksController extends Controller
 
       return back();
     }
-    public function build(Lock $Lock)
+    public function lcBuild(Lock $Lock)
     {
       $contents = file_get_contents(public_path() . '/Build/deviceinfo.h');
 

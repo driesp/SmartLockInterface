@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->string('department');
             $table->string('function');
+            $table->boolean('admin');
             $table->timestamps();
         });
     }

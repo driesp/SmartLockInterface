@@ -22,6 +22,7 @@ class FloorplanController extends Controller
   public function __construct()
   {
       $this->middleware('auth');
+      $this->middleware('admin');
   }
 
   protected function fcGroundValidator(array $data)
@@ -145,6 +146,16 @@ class FloorplanController extends Controller
       $lock = Lock::find($request['id']);
       $lock->update($request->all());
       $Floor->Locks()->save($lock);
+      return back();
+    }
+    public function fcFloorLocks(Ground $Ground, Building $Building, Floor $Floor)
+    {
+      return view('floorplan.fcFloorLocks', compact('Ground','Building','Floor'));
+    }
+    public function fcFloorLockDelete(Ground $Ground, Building $Building, Floor $Floor, Lock $Lock)
+    {
+      $Lock->floor_id = NULL;
+      $Lock->save();
       return back();
     }
 
