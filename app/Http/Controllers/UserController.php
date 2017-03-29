@@ -11,8 +11,12 @@ use Auth;
 
 class UserController extends Controller
 {
-
-
+  private function ucRandomPassword()
+  {
+    $length = 10;
+    $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    return substr( str_shuffle( $chars ), 0, $length );
+  }
   protected function ucPasswordValidator(array $data)
   {
       return Validator::make($data, [
@@ -39,7 +43,8 @@ class UserController extends Controller
 
   public function ucCreate()
   {
-    return view('user.ucCreate');
+    $password = $this->ucRandomPassword();
+    return view('user.ucCreate', compact('password'));
   }
 
   public function ucUpdate(Request $request, User $User)

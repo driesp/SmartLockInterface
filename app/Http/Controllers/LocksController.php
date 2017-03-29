@@ -13,6 +13,13 @@ use Auth;
 
 class LocksController extends Controller
 {
+  private function lcRandomPassword()
+  {
+    $length = 15;
+    $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    return substr( str_shuffle( $chars ), 0, $length );
+  }
+
 
     public function __construct()
     {
@@ -36,8 +43,8 @@ class LocksController extends Controller
     }
     public function lcCreate()
     {
-
-      return view('lock.lcCreate');
+      $password = $this->lcRandomPassword();
+      return view('lock.lcCreate',compact('password'));
 
     }
 

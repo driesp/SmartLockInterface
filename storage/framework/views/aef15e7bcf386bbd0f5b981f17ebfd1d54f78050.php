@@ -29,7 +29,7 @@
           <div class="form-group">
             <label class="col-md-4 control-label" for="Password">Password</label>
             <div class="col-md-4">
-            <input id="Password" name="password" type="text" placeholder="password" value='<?php echo e(old('password')); ?>' class="form-control input-md">
+            <input id="Password" name="password" type="text" placeholder="password" value='<?php echo e($password); ?>' class="form-control input-md">
 
             </div>
           </div>
