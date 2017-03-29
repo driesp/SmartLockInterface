@@ -31,9 +31,7 @@ if '%errorlevel%' NEQ '0' (
 cls
 echo Merging Softdevice, Bootloader and software!
 
-mergehex.exe --merge bootloader.hex softdevice.hex -o bsMerged.hex
-
-mergehex.exe --merge bsMerged.hex Smartlock.hex -o program.hex
+mergehex.exe --merge softdevice.hex Smartlock.hex -o program.hex
 cls
 echo Merging done
 echo Opening OpenOCD -> OpenOCD has to be in your path
