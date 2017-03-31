@@ -62,7 +62,7 @@ int main(void)
     
     ble.init();
  
-    ble.securityManager().init(true, true, SecurityManager::IO_CAPS_DISPLAY_ONLY, (const char *)  "123456");
+    ble.securityManager().init(true, true, SecurityManager::IO_CAPS_DISPLAY_ONLY, (const uint8_t *)  "123456");
     ble.securityManager().onPasskeyDisplay(passkeyDisplayCallback);
     ble.securityManager().onSecuritySetupCompleted(securitySetupCompletedCallback);
     ble.gap().onDisconnection(disconnectionCallback);
