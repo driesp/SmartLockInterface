@@ -36,7 +36,7 @@ class AndroidController extends Controller
           $Locks = $user->Locks;
           $data = "";
           foreach ($Locks as $lock) {
-            $intervalData = "[".$lock->room.";".$lock->password.";".$lock->address."]";
+            $intervalData = "[".$lock->room.";".$lock->password.";".$lock->address.";"".$lock->bonding."]";
 
             $data .= $intervalData ."#";
 

@@ -33,6 +33,14 @@
 
             </div>
           </div>
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="bonding">Bonding Password</label>
+            <div class="col-md-4">
+            <input id="bonding" name="bonding" type="text" placeholder="bonding" value='{{$bonding}}' class="form-control input-md">
+
+            </div>
+          </div>
 
           <!-- Text input-->
           <div class="form-group">

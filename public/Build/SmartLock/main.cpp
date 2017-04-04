@@ -59,17 +59,17 @@ int main(void)
 
     button.fall(&openHold);
     button.rise(&closeHold);
-    
+
     ble.init();
- 
-    ble.securityManager().init(true, true, SecurityManager::IO_CAPS_DISPLAY_ONLY, (const uint8_t *)  "123456");
+
+    ble.securityManager().init(true, true, SecurityManager::IO_CAPS_DISPLAY_ONLY, (const uint8_t *)  BONDING );
     ble.securityManager().onPasskeyDisplay(passkeyDisplayCallback);
     ble.securityManager().onSecuritySetupCompleted(securitySetupCompletedCallback);
     ble.gap().onDisconnection(disconnectionCallback);
     ble.gap().onConnection(connectionCallback);
-    
+
     SmartLockService smService(ble);
-    
+
     /* Setup advertising */
     ble.gap().accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED | GapAdvertisingData::LE_GENERAL_DISCOVERABLE); // BLE only, no classic BT
     ble.gap().setAdvertisingType(GapAdvertisingParams::ADV_CONNECTABLE_UNDIRECTED); // advertising type
@@ -78,7 +78,7 @@ int main(void)
     ble.gap().setAdvertisingInterval(100); // 100ms.
 
     ble.gap().startAdvertising();
-    
+
     printf("\n\r**************************************\n\r");
     printf("DEVICE NAME: %s\n\r",  DEVICE_NAME);
     printf("SERVICE UUID: %02x%02x%02x%02x-%02x%02x-%02x%02x-%02x02%x-%02x%02x%02x%02x%02x%02x\n\r",base_uuid[0],base_uuid[1],base_uuid[2],base_uuid[3],base_uuid[4],base_uuid[5],base_uuid[6],base_uuid[7],base_uuid[8],base_uuid[9],base_uuid[10],base_uuid[11],base_uuid[12],base_uuid[13],base_uuid[14],base_uuid[15]);

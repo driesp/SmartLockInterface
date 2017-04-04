@@ -19,6 +19,12 @@ class LocksController extends Controller
     $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     return substr( str_shuffle( $chars ), 0, $length );
   }
+  private function lcRandomBonding()
+  {
+    $length = 6;
+    $chars = '0123456789';
+    return substr( str_shuffle( $chars ), 0, $length );
+  }
 
 
     public function __construct()
@@ -44,7 +50,8 @@ class LocksController extends Controller
     public function lcCreate()
     {
       $password = $this->lcRandomPassword();
-      return view('lock.lcCreate',compact('password'));
+      $bonding = $this->lcRandomBonding();
+      return view('lock.lcCreate',compact('password', 'bonding'));
 
     }
 
@@ -81,7 +88,8 @@ class LocksController extends Controller
       $this->validate($request, [
         'room' => 'required|unique:locks,room',
         'address' => 'required|unique:locks,address',
-        'password' => 'required|min:6'
+        'password' => 'required|min:6|max:15',
+        'bonding' => 'required|min:4|max:6'
       ]);
 
       $Lock = new Lock($request->all());
@@ -95,6 +103,7 @@ class LocksController extends Controller
 
       $contents = $contents . '/*Device Name*/ ' . PHP_EOL . 'const static char       DEVICE_NAME[]           = "'.$Lock->room.'";'. PHP_EOL;
       $contents = $contents . '/*Device Password*/ ' . PHP_EOL . 'const char              PASSWORD[]              = "'.$Lock->password.'";'. PHP_EOL;
+      $contents = $contents . '/*Device Bonding Password*/ ' . PHP_EOL . 'const char              BONDING[]              = "'.$Lock->bonding.'";'. PHP_EOL;
       //dd($contents);
 
       file_put_contents(public_path() . '/Build/SmartLock/deviceinfo.h', $contents);

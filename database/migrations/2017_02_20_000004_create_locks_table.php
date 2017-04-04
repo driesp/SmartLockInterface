@@ -20,6 +20,7 @@ class CreateLocksTable extends Migration
           $table->string('room')->unique();
           $table->string('address')->unique();
           $table->string('password');
+          $table->string('bonding');
           $table->integer('x1x')->nullable();
           $table->integer('x1y')->nullable();
           $table->integer('x2x')->nullable();
