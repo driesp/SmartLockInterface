@@ -38,13 +38,11 @@ void securitySetupCompletedCallback(Gap::Handle_t handle, SecurityManager::Secur
     }
 }
 
-void openHold()
+void openLockManual()
 {
     printf("Opening Lock!\n\r");
     strike = 1;
-}
-void closeHold()
-{
+    wait(5);
     strike = 0;
     printf("Closing Lock!\n\r");
 }
@@ -57,8 +55,7 @@ int main(void)
     /* initialize stuff */
     printf("\n\r********* Starting Main Loop *********\n\r");
 
-    button.fall(&openHold);
-    button.rise(&closeHold);
+    button.rise(&openLockManual);
 
     ble.init();
 
