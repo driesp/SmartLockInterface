@@ -38,17 +38,14 @@ void securitySetupCompletedCallback(Gap::Handle_t handle, SecurityManager::Secur
     }
 }
 
-void openHold()
+void lockOpenManual()
 {
     printf("Opening Lock!\n\r");
     strike = 1;
-}
-void closeHold()
-{
+    wait(5);
     strike = 0;
     printf("Closing Lock!\n\r");
 }
-
 /*
  *  Main loop
 */
@@ -57,12 +54,11 @@ int main(void)
     /* initialize stuff */
     printf("\n\r********* Starting Main Loop *********\n\r");
 
-    button.fall(&openHold);
-    button.rise(&closeHold);
+    button.rise(&lockOpenManual);
 
     ble.init();
 
-    ble.securityManager().init(true, true, SecurityManager::IO_CAPS_DISPLAY_ONLY, (const uint8_t *)  "123456");
+    ble.securityManager().init(true, true, SecurityManager::IO_CAPS_DISPLAY_ONLY, (const uint8_t *) BONDING);
     ble.securityManager().onPasskeyDisplay(passkeyDisplayCallback);
     ble.securityManager().onSecuritySetupCompleted(securitySetupCompletedCallback);
     ble.gap().onDisconnection(disconnectionCallback);
