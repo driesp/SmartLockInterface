@@ -57,12 +57,12 @@ int main(void)
     /* initialize stuff */
     printf("\n\r********* Starting Main Loop *********\n\r");
 
-    button.fall(&closeHold);
-    button.rise(&openHold);
+    button.fall(&openHold);
+    button.rise(&closeHold);
 
     ble.init();
 
-    ble.securityManager().init(true, true, SecurityManager::IO_CAPS_DISPLAY_ONLY, (const uint8_t *)  BONDING);
+    ble.securityManager().init(true, true, SecurityManager::IO_CAPS_DISPLAY_ONLY, (const uint8_t *) BONDING);
     ble.securityManager().onPasskeyDisplay(passkeyDisplayCallback);
     ble.securityManager().onSecuritySetupCompleted(securitySetupCompletedCallback);
     ble.gap().onDisconnection(disconnectionCallback);
