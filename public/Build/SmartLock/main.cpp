@@ -77,8 +77,8 @@ int main(void)
 
     printf("\n\r**************************************\n\r");
     printf("DEVICE NAME: %s\n\r",  DEVICE_NAME);
-    printf("SERVICE UUID: %02x%02x%02x%02x-%02x%02x-%02x%02x-%02x02%x-%02x%02x%02x%02x%02x%02x\n\r",base_uuid[0],base_uuid[1],base_uuid[2],base_uuid[3],base_uuid[4],base_uuid[5],base_uuid[6],base_uuid[7],base_uuid[8],base_uuid[9],base_uuid[10],base_uuid[11],base_uuid[12],base_uuid[13],base_uuid[14],base_uuid[15]);
-    printf("WRITE UUID: %02x%02x%02x%02x-%02x%02x-%02x%02x-%02x02%x-%02x%02x%02x%02x%02x%02x\n\r",write_uuid[0],write_uuid[1],write_uuid[2],write_uuid[3],write_uuid[4],write_uuid[5],write_uuid[6],write_uuid[7],write_uuid[8],write_uuid[9],write_uuid[10],write_uuid[11],write_uuid[12],write_uuid[13],write_uuid[14],write_uuid[15]);
+    printf("SERVICE UUID: %02x%02x%02x%02x-%02x%02x-%02x%02x-%02x%02x-%02x%02x%02x%02x%02x%02x\n\r",base_uuid[0],base_uuid[1],base_uuid[2],base_uuid[3],base_uuid[4],base_uuid[5],base_uuid[6],base_uuid[7],base_uuid[8],base_uuid[9],base_uuid[10],base_uuid[11],base_uuid[12],base_uuid[13],base_uuid[14],base_uuid[15]);
+    printf("WRITE UUID: %02x%02x%02x%02x-%02x%02x-%02x%02x-%02x%02x-%02x%02x%02x%02x%02x%02x\n\r",write_uuid[0],write_uuid[1],write_uuid[2],write_uuid[3],write_uuid[4],write_uuid[5],write_uuid[6],write_uuid[7],write_uuid[8],write_uuid[9],write_uuid[10],write_uuid[11],write_uuid[12],write_uuid[13],write_uuid[14],write_uuid[15]);
     printf("\r**************************************\n\r");
     /* Infinite loop waiting for BLE interrupt events */
     while (true) {
